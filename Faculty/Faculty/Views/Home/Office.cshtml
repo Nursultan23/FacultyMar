@@ -1,0 +1,300 @@
+﻿@model Faculty.Models.ViewModels.OfficeViewModel
+
+@{
+    ViewBag.Title = "Личный каюинет";
+}
+
+<div class="row">
+    @if (Model.Role == "admin")
+    {
+        <br />
+        <br />
+        <div class="col-md-4">
+            <div class="panel panel-danger" style="height:250px;">
+                <div class="panel-heading">
+                    <h4>Работа с персоналом кафедры</h4>
+                </div>
+
+                <div class="panel-body">
+                    <a href="/Account/DepartmentPersonal">Редактирование или удаление <br /> сотрудников кафердры</a><br />
+                    <a href="/Account/CreateWorker">Добавить сотрудника кафедры</a><br />
+                    <a href="/Account/CreateFacultyHead">Добавить Заведующего кафедры</a><br />
+                    <hr />
+                    <a href="/Notification/HeadNotifications">Обьявление кафедры</a><br />
+                    <a href="/Notification/AddNotification"> Сделать обьявление</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default " style="height:250px;">
+                <div class="panel-heading">
+                    <h4>Работа с данными студентов</h4>
+                </div>
+
+                <div class="panel-body">
+                    <a href="/Account/Students">Редактирование/добавление<br />удаление студентов</a><br />
+                    <a href="/Account/CreateSudent">Добавить студента</a><br />
+                    <a href="/Home/Groups">Группы</a><br />
+                   
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-info" style="height:250px; ">
+                <div class="panel-heading">
+                    <h4>Работа с курсами/предметами</h4>
+                </div>
+
+                <div class="panel-body">
+                    <a href="/Home/Courses">Редактирование и удаление курсов</a><br />
+                    <a href="/Home/AddDiscipline">Добавить предмет</a><br />
+                    <a href="/Home/AddCourse">Добавить курс</a>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.Role == "dephead")
+    {
+        <div class="col-md-8">
+            <h2>
+                Личные данные
+            </h2>
+            <hr />
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        Фамилия
+                    </td>
+                    <td>
+                        @Model.LastName
+                    </td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td>@Model.Firstname</td>
+                </tr>
+                <tr>
+                    <td>Отчество</td>
+                    <td>@Model.MiddleName</td>
+                </tr>
+                <tr>
+                    <td>Статус</td>
+                    <td>@Model.WorkerStatus</td>
+                </tr>
+
+            </table>
+            <br />
+            <a href="/Manage/ChangePassword" class="btn btn-default">Смена пароля</a>
+            @*<a href="" class="btn btn-primary">Редактировать</a>*@
+        </div>
+        <div class="col-md-4">
+            <h2>
+                Управление кафедрой
+            </h2>
+            <hr />
+            <a href="/Account/DepartmentPersonal">Редактирование или удаление <br /> сотрудников кафердры</a><br />
+            <a href="/Account/CreateWorker">Добавить сотрудника кафедры</a><br />
+            <hr />
+            <a href="/Home/Courses">Редактирование и удаление курсов</a><br />
+            <a href="/Home/AddDiscipline">Добавить предмет</a><br />
+            <a href="/Home/AddCourse">Добавить курс</a>
+
+            <hr />
+            <a href="/Notification/HeadNotifications">Обьявление кафедры</a><br />
+            <a href="/Notification/AddNotification"> Сделать обьявление</a>
+            <hr />
+            <a href="/Account/Students">Редактирование/добавление<br />удаление студентов</a><br />
+            <a href="/Account/CreateSudent">Добавить студента</a><br />
+            <a href="/Home/Groups">Группы</a><br />
+            <a href="/Home/RegistrationRequests/">Заявки на регистрацию</a> <a href="/Home/RegistrationRequests/" class="btn btn-danger btn-xs"> @Model.RegisterRequestCount</a><br />
+            <a href="/Home/CourseSubscriptionRequests">Заявки на подписку к курсам</a> <a href="/Home/CourseSubscriptionRequests" class="btn btn-danger btn-xs">@Model.CourseRequestCount</a>
+        </div>
+
+    }
+    else if (Model.Role == "personal")
+    {
+        <div class="col-md-7">
+            <h2>
+                Личные данные
+            </h2>
+            <hr />
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        Фамилия
+                    </td>
+                    <td>
+                        @Model.LastName
+                    </td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td>@Model.Firstname</td>
+                </tr>
+                <tr>
+                    <td>Отчество</td>
+                    <td>@Model.MiddleName</td>
+                </tr>
+                <tr>
+                    <td>Статус</td>
+                    <td>@Model.WorkerStatus</td>
+                </tr>
+                <tr>
+                    <td>Ученая степень</td>
+                    <td>
+                        @if (@Model.ScienceDegree != "")
+                {
+                    @Model.ScienceDegree
+        }
+        else
+        {
+            <p>Отсутствует информация</p>
+}
+                    </td>
+                </tr>
+
+            </table>
+            <br />
+            <a href="/Account/ChangePassword" class="btn btn-default">Смена пароля</a>
+            @*<a href="" class="btn btn-primary">Редактировать</a>*@
+        </div>
+        <div class="col-md-5">
+            <h2>
+                Управление кафедрой
+            </h2>
+
+            <a href="/Home/Courses">Редактирование и удаление курсов</a><br />
+            <a href="/Home/AddDiscipline">Добавить предмет</a><br />
+            <a href="/Home/AddCourse">Добавить курс</a>
+
+            <hr />
+            <a href="/Notification/HeadNotifications">Обьявление кафедры</a><br />
+            <a href="/Notification/AddNotification"> Сделать обьявление</a>
+            <hr />
+            <a href="/Account/Students">Редактирование/добавление<br />удаление студентов</a><br />
+            <a href="/Account/CreateSudent">Добавить студента</a><br />
+            <a href="/Home/Groups">Группы</a><br />
+            <a href="/Home/RegistrationRequests/">Заявки на регистрацию</a> <a href="/Home/RegistrationRequests/" class="btn btn-danger btn-xs"> @Model.RegisterRequestCount</a><br />
+            <a href="/Home/CourseSubscriptionRequests">Заявки на подписку к курсам</a> <a href="/Home/CourseSubscriptionRequests" class="btn btn-danger btn-xs">@Model.CourseRequestCount</a>
+        </div>
+    }
+    else if (Model.Role == "professor")
+    {
+        <div class="col-md-7">
+            <h2>
+                Личные данные
+            </h2>
+            <hr />
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        Фамилия
+                    </td>
+                    <td>
+                        @Model.LastName
+                    </td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td>@Model.Firstname</td>
+                </tr>
+                <tr>
+                    <td>Отчество</td>
+                    <td>@Model.MiddleName</td>
+                </tr>
+                <tr>
+                    <td>Статус</td>
+                    <td>@Model.WorkerStatus</td>
+                </tr>
+                <tr>
+                    <td>Ученая степень</td>
+                    <td>@Model.ScienceDegree</td>
+                </tr>
+                <tr>
+                    <td>Количество кредитов</td>
+                    <td>@Model.CreditCount</td>
+                </tr>
+                <tr>
+                    <td>Количество курсов</td>
+                    <td>@Model.CourseCount</td>
+                </tr>
+
+            </table>
+            <br />
+            <a href="/Manage/ChangePassword" class="btn btn-default">Смена пароля</a>
+            @*<a href="" class="btn btn-primary">Редактировать</a>*@
+        </div>
+        <div class="col-md-5">
+            <h2>
+                Действия
+            </h2>
+            <hr />
+            <a href="">Мои курсы</a>
+            <hr />
+            <a href="/Home/AddDiscipline">Добавить предмет</a><br />
+
+        </div>
+    }
+    else if (Model.Role == "student")
+    {
+        <div class="col-md-7">
+            <h2>
+                Личные данные
+            </h2>
+            <hr />
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        Фамилия
+                    </td>
+                    <td>
+                        @Model.LastName
+                    </td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td>@Model.Firstname</td>
+                </tr>
+                <tr>
+                    <td>Отчество</td>
+                    <td>@Model.MiddleName</td>
+                </tr>
+                <tr>
+                    <td>Статус</td>
+                    <td>@Model.StudentStatus</td>
+                </tr>
+                <tr>
+                    <td>Дата поступления</td>
+                    <td>@Model.AddmissionTime.ToShortDateString()</td>
+                </tr>
+                <tr>
+                    <td>Дата (предпологаемого)выпуска</td>
+                    <td>@Model.GraduationTime.ToShortDateString()</td>
+                </tr>
+                <tr>
+                    <td>Количество кредитов</td>
+                    <td>@Model.CreditCount</td>
+                </tr>
+                <tr>
+                    <td>Количество получаемых курсов</td>
+                    <td>@Model.CourseCount</td>
+                </tr>
+            </table>
+            <br />
+            <a href="/Account/ChangePassword" class="btn btn-default">Смена пароля</a>
+            @*<a href="" class="btn btn-primary">Редактировать</a>*@
+        </div>
+        <div class="col-md-5">
+            <h2>
+                Действия
+            </h2>
+            <hr />
+            <a href="/Home/MyCourses/@Model.Id">Мои курсы</a><br />
+            <a href="/Home/ElectiveCourses">Элективные курсы</a><br />
+            <a href="/Notification/Notifications">Обьявления кафедры</a>
+
+        </div>
+    }
+</div>
+

@@ -1,0 +1,86 @@
+﻿@model Faculty.Models.ViewModels.CourceViewModel
+
+@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Детали курса</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreditCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreditCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lecProfessor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lecProfessor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lecCreditCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lecCreditCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.semProfessor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.semProfessor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SemCreditCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SemCreditCount)
+        </dd>
+
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Literatures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Literatures)
+        </dd>
+    </dl>
+</div>
+<p>
+    <a href="" class="btn btn-primary">Редактировать</a>
+    <a href="" class="btn btn-danger">Удалить</a>
+</p>

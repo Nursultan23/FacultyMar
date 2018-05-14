@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Faculty.Models.ViewModels.CourceSubscriptionViewModel>
+
+@{
+    ViewBag.Title = "CourseSubscriptionRequests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CourseSubscriptionRequests</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>ФИО студента</th>
+        <th>Название курса</th>
+        <th>Статус</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.student.LastName @item.student.Firstname @item.student.MiddleName</td>
+        <td>@item.cource.Title</td>
+        <td>
+            @if ((int)item.status == 1)
+            {
+                <p style="color:chartreuse;">Одобрено</p>
+            }
+            else if ((int)item.status == 2)
+            {
+                    <p style="color:blue;">Активно</p>
+            }
+            else
+            {
+                    <p style="color:red;">Не принят</p>
+            }
+        </td>
+        <td>
+            <a href="/Home/SubscriptionRequest/@item.SubId" class="btn btn-default btn-xs">Посмотреть</a>
+        </td>
+
+    </tr>
+}
+
+</table>

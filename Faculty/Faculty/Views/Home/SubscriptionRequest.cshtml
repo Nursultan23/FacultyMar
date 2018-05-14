@@ -1,0 +1,85 @@
+﻿@model Faculty.Models.ViewModels.CourceSubscriptionViewModel
+
+@{
+    ViewBag.Title = "SubscriptionRequest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Заявка на участие в элективном курсе</h2>
+<div>
+
+    <h4>Детали курса</h4>
+
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.cource.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cource.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.cource.CreditCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cource.CreditCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.cource.lecProfessor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cource.lecProfessor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.cource.lecCreditCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cource.lecCreditCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.cource.semProfessor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cource.semProfessor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.cource.SemCreditCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cource.SemCreditCount)
+            </dd>
+        </dl>
+
+
+        <h4>
+            Личные данные студента
+        </h4>
+        <dl class="dl-horizontal">
+            <dt>Фамилия</dt>
+            <dd>@Model.student.LastName</dd>
+            <dt>Имя</dt>
+            <dd>@Model.student.Firstname</dd>
+            <dt>Отчество</dt>
+            <dd>@Model.student.MiddleName</dd>
+            <dt>Дата поступления</dt>
+            <dd>@Model.student.AddmissionTime.ToShortDateString()</dd>
+            <dt>Дата выпуска</dt>
+            <dd>@Model.student.GraduationTime.ToShortDateString()</dd>
+        </dl>
+    </div>
+    <a href="/Home/ConnfirmSubscription/@Model.SubId" class="btn btn-success">Одобрить</a>&nbsp;
+    <a href="/Home/RejectSubscription/@Model.SubId" class=" btn btn-danger">Запретить</a>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@model Faculty.Models.subjects.RegistrationRequest
+
+@{
+    ViewBag.Title = "Заявка на регистрацию ";
+}
+
+<h2>Заявка на регистрацию </h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Имя:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            Отчество
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            Фамилия
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            Электронная почта
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Номер телефона
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelephoneNumber)
+        </dd>
+        <dt>
+            Статус
+        </dt>
+
+        <dd>
+            @if ((int)Model.status == 1)
+            {
+                <p style="color:chartreuse;">Одобрено</p>
+            }
+            else if ((int)Model.status == 2)
+            {
+                <p style="color:blue;">Активно</p>
+            }
+            else
+            {
+                <p style="color:red;">Не принят</p>
+            }
+        </dd>
+
+    </dl>
+</div>
+
+@if ((int)Model.status == 1)
+{
+    <a href="/Home/RegistrationRequests/" class="btn btn-default">Назад к списку</a>
+}
+else if ((int)Model.status == 2)
+{
+    <a href="/Home/RegistrationRequests/" class="btn btn-default">Назад к списку</a>
+    <a href="/Account/RejectRegStudent/@Model.Id" class="btn btn-danger">Не принимать</a>
+    <a href="/Account/RegistrateStudent/@Model.Id" class="btn btn-success">Зарегистрировать</a>
+
+}
+else
+{
+    <a href="/Home/RegistrationRequests/" class="btn btn-default">Назад к списку</a>
+}
+
+
+

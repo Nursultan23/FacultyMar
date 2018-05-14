@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Faculty.Models.users.Group>
+
+@{
+    ViewBag.Title = "Groups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Группы</h2>
+
+<p>
+   <a href="/Account/CreateGroup" class="btn btn-success "><span class="glyphicon glyphicon-plus-sign"></span> Добавить группу</a>
+</p>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stage)
+            </td>
+            <td>
+                @if (item.isActive)
+                {
+                        <p style="color:green;">Действующая</p>
+                }
+                else
+                {
+                        <p style="color:red;">Неактивна</p>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Посмотреть", "", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

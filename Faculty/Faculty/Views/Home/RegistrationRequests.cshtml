@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Faculty.Models.subjects.RegistrationRequest>
+
+@{
+    ViewBag.Title = "Заявки на регистрацию";
+}
+
+<h2>Заявки на регистрацию</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            ФИО
+        </th>
+        <th>
+            E-mail
+        </th>
+        <th>
+            Тел. номер
+        </th>
+        <th>
+            Статус
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.LastName @item.Firstname @item.MiddleName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelephoneNumber)
+            </td>
+            <td>
+                @if ((int)item.status == 1)
+                {
+                    <p style="color:chartreuse;">Одобрено</p>
+                }
+                else if ((int)item.status == 2)
+                {
+                    <p style="color:blue;">Активно</p>
+                }
+                else
+                {
+                    <p style="color:red;">Не принят</p>
+                }
+            </td>
+            <td>
+                <a href="/Home/RegistrationRequest/@item.Id" class="btn btn-default btn-xs">Просмотреть</a>
+            </td>
+        </tr>
+    }
+
+</table>
+

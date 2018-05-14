@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @if (ViewBag.Success)
+    {
+        <br />
+        <br />
+        <div class="panel col-md-12" style="border-style:dotted; border-bottom-width:1px; border-color:green;color:darkslategrey; background-color:lightgreen">
+            <h2>Удачно</h2>
+           
+            <h5>@ViewBag.Message</h5>
+        </div>
+    }
+    else
+    {
+        <br />
+        <br />
+        <div class="panel col-md-12" style="border-style:dotted; border-bottom-width:1px; border-color:red; background-color:palevioletred; color:red;">
+            <h2>Ошибка</h2>
+            
+            <h5>@ViewBag.Message</h5>
+        </div>
+    }
+</div>
+
+

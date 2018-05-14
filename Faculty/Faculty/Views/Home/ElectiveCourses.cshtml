@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Faculty.Models.ViewModels.CourceViewModel>
+
+@{
+    ViewBag.Title = "курсы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Все элективные курсы которые предлагает кафедра</h3>
+<hr />
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditCount)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.lecProfessor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.semProfessor)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+
+            <td>
+                Лекция(@Html.DisplayFor(modelItem => item.lecCreditCount))
+                +
+                Семинар(@Html.DisplayFor(modelItem => item.SemCreditCount))=@item.CreditCount
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lecProfessor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.semProfessor)
+            </td>
+
+            <td>
+                <a href="/Home/StudentCourse/@item.CourseId" class="btn btn-default">Просмотреть</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+

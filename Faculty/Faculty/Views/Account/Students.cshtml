@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Faculty.Models.users.Student>
+
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Студенты</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            ФИО
+        </th>
+        <th>
+           Почта
+        </th>
+        <th>
+            Статус
+        </th>
+        <th>
+            КУРС
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName) &nbsp;  @Html.DisplayFor(modelItem => item.Firstname) &nbsp; @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+
+        <td>
+            @if ((int)item.Status == 1)
+            {
+            <p style="color:chartreuse;">учится</p>
+            }
+            else if ((int)item.Status == 3)
+            {
+                <p style="color:blue;">академический отпуск</p>
+            }
+            else if ((int)item.Status == 2)
+            {
+                <p style="color:red;"> Отчислен</p>
+            }
+            else
+            {
+                <p style="color:red;"> Закончил университет</p>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stage)
+        </td>
+        
+        <td>
+            <a href="/Account/Student/@item.Id">Просмотреть</a>
+        </td>
+    </tr>
+}
+
+</table>

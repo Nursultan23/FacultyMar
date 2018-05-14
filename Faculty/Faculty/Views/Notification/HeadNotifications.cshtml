@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Faculty.Models.subjects.Notification>
+
+@{
+    ViewBag.Title = "HeadNotifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Обьявления кафедры</h2>
+
+<p>
+    <a href="/Notification/AddNotification" class="btn btn-success">Создать обьявление</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            <a href="/Notification/DeleteNotification" class="btn btn-danger btn-xs">Удалить</a>
+        </td>
+    </tr>
+}
+
+</table>

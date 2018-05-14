@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Faculty.Models.users.Worker>
+
+@{
+    ViewBag.Title = "Персонал кафедры";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Персонал кафедры</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            ФИО
+        </th>
+        <th>
+            Почта
+        </th>
+        <th>
+            Ученая степень
+        </th>
+        <th>
+            Статус
+        </th>
+        <th>
+            Должность
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)  @Html.DisplayFor(modelItem => item.MiddleName) @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScienceDegree)
+            </td>
+            <td>
+                @if ((int)item.Status == 1)
+                {
+                    <p style="color:chartreuse;">Работает</p>
+                }
+                else if ((int)item.Status == 3)
+                {
+                    <p style="color:blue;">B отпуске</p>
+                }
+                else if ((int)item.Status == 2)
+                {
+                    <p style="color:red;"> Уволен</p>
+                }
+                else
+                {
+                    <p style="color:red;"> На больничном</p>
+                }
+            </td>
+            <td>
+                @if (item.isItProfessor)
+                {
+                    <p>Преподователь</p>
+                }
+                else
+                {
+                    <p>Сотрудник кафедры</p>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Просмотреть", "Worker", new { id = item.id })
+
+            </td>
+        </tr>
+    }
+
+</table>
+
